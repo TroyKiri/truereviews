@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.scss';
 
 import CommonLayout from '@/components/CommonLayout';
 import Main from '@/components/Main';
+import Reviews from '@/components/Reviews';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function Home() {
       <CommonLayout>
         <main>
           <Main />
+          <Reviews />
         </main>
       </CommonLayout>
       {/* <main className={styles.main}>
