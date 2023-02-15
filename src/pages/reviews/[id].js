@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 export default function ReviewPage() {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
 
   const [review, setReview] = useState({});
 
