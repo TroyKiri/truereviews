@@ -1,11 +1,15 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
-import styles from '@/styles/Home.module.scss';
+// import Image from 'next/image';
+// import { Inter } from '@next/font/google';
+// import styles from '@/styles/Home.module.scss';
 
-import CommonLayout from '@/components/CommonLayout';
-import Main from '@/components/Main';
-import Reviews from '@/components/Reviews';
+// import CommonLayout from '@/components/CommonLayout';
+// import Main from '@/components/Main';
+// import Reviews from '@/components/Reviews';
+
+import CommonLayout from '../components/CommonLayout';
+import Main from '../components/Main';
+import Reviews from '../components/Reviews';
 
 const inter = Inter({ subsets: ['latin'] });
 
