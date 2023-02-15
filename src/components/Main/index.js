@@ -14,7 +14,7 @@ export default function Main() {
             </p>
           </div>
         </div>
-        <Link className={s.logo} href="https://www.leomax.ru/">
+        <Link className={s.logo} href="https://www.leomax.ru/" target="_blank">
           <img alt="Logo" src="/images/logo.png" />
         </Link>
         <div className={s.reviews}>
