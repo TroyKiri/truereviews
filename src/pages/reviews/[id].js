@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import CommonLayout from '@/components/CommonLayout';
 import Main from '@/components/Main';
 
-import ReviewCard from '@/components/Reviews/ReviewCard';
+import SingleReview from '@/components/SingleReview';
 import { reviews } from '@/common/reviews/reviews';
 import { useEffect, useState } from 'react';
 
@@ -29,7 +29,7 @@ export default function ReviewPage() {
       <CommonLayout>
         <main>
           <Main />
-          {review && <ReviewCard {...review} />}
+          <SingleReview review={review} />
         </main>
       </CommonLayout>
     </>

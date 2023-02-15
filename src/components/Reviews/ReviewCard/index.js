@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import s from './ReviewCard.module.scss';
 
-export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, text }) {
+export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, text, single }) {
   return (
     <article className={s.card}>
       <figure className={s.figure}>
@@ -24,7 +24,7 @@ export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, 
           <h3>отзыв:</h3>
           <p className={s.text}>{text}</p>
         </div>
-        <Link className={s.button} href={`/reviews/${id}`}>читать весь отзыв</Link>
+        {!single && <Link className={s.button} href={`/reviews/${id}`}>читать весь отзыв</Link>}
       </div>
     </article>
   );
