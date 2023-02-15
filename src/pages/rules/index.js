@@ -1,9 +1,7 @@
 import Head from 'next/head';
 
-// import CommonLayout from '@/components/CommonLayout';
-// import Rules from '@/components/Rules';
-import CommonLayout from '../../components/CommonLayout';
-import Rules from '../../components/Rules';
+import CommonLayout from '@/components/CommonLayout';
+import Rules from '@/components/Rules';
 
 export default function RulesSection() {
   return (

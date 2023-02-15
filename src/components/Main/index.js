@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { assetPrefix } from 'next.config';
 import s from './Main.module.scss';
 
 export default function Main() {
@@ -15,7 +16,7 @@ export default function Main() {
           </div>
         </div>
         <Link className={s.logo} href="https://www.leomax.ru/" target="_blank">
-          <img alt="Logo" src="/images/logo.png" />
+          <img alt="Logo" src={`${assetPrefix}/images/logo.png`} />
         </Link>
         <div className={s.reviews}>
           <div className={s.chartWrap}></div>

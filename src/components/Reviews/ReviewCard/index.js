@@ -1,10 +1,11 @@
 import s from './ReviewCard.module.scss';
+import { assetPrefix } from 'next.config';
 
 export default function ReviewCard() {
   return (
     <article className={s.card}>
       <figure className={s.figure}>
-        <img src="/images/user_no_photo.png" alt="Фото пользователя" className={s.photo} />
+        <img src={`${assetPrefix}/images/user_no_photo.png`} alt="Фото пользователя" className={s.photo} />
         <figcaption className={s.caption}>UserName</figcaption>
       </figure>
       <div className={s.wrap}>
