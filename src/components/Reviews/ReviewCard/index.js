@@ -1,33 +1,31 @@
+import Link from 'next/link';
 import s from './ReviewCard.module.scss';
 import { assetPrefix } from 'next.config';
 
-export default function ReviewCard() {
+export default function ReviewCard({ id, title, nameUser, date, dignity, flaws, text }) {
   return (
     <article className={s.card}>
       <figure className={s.figure}>
         <img src={`${assetPrefix}/images/user_no_photo.png`} alt="Фото пользователя" className={s.photo} />
-        <figcaption className={s.caption}>UserName</figcaption>
+        <figcaption className={s.caption}>{nameUser}</figcaption>
       </figure>
       <div className={s.wrap}>
-        <h2>Знаю этот магазин с 2015 года, по качеству никогда не подводили!</h2>
-        <p className={s.date}>07.07.2022</p>
+        <h2>{title}</h2>
+        <p className={s.date}>{date}</p>
         <div className={s.rating}></div>
         <div className={s.inner}>
           <h3 className={s.dignity}>достоинства:</h3>
-          <p className={s.text}>Качественная одежда для женщин, хороший сервис, можно оформить заказ по телефону, бонусы за &quot;друзей&quot;</p>
+          <p className={s.text}>{dignity}</p>
         </div>
         <div className={s.inner}>
           <h3 className={s.flaws}>недостатки:</h3>
-          <p className={s.text}>Бывает задерживают с доставкой, если не в МСК и области - на следующий день заказ вы не получите.</p>
+          <p className={s.text}>{flaws}</p>
         </div>
         <div className={s.inner}>
           <h3>отзыв:</h3>
-          <p className={s.text}>
-            Я этот магазин давно знаю, раньше мы тут с сестрой и мамой вместе заказывали одежду, но сейчас я переехала в другой город и продолжаю заказывать уже сама. Выбор одежды тут классный,
-            представлены бренды, которые шьют...
-          </p>
+          <p className={s.text}>{text}</p>
         </div>
-        <button className={s.button}>читать весь отзыв</button>
+        <Link className={s.button} href={`/reviews/${id}`}>читать весь отзыв</Link>
       </div>
     </article>
   );
