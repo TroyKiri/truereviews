@@ -77,7 +77,6 @@
     margin-bottom: 24px;
     width: 170px;
     height: 30px;
-    border: 1px solid yellow;
 
     @media (min-width: 1200px) {
       margin-bottom: 40px;
@@ -126,9 +125,24 @@
       font-size: 14px;
       line-height: 17px;
       color: #000;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -ms-line-clamp: 6;
+      -webkit-line-clamp: 6;
+      line-clamp: 6;
+      display: -webkit-box;
+      display: box;
+      word-wrap: break-word;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
 
       @media (min-width: 1200px) {
         margin-bottom: 30px;
+        -ms-line-clamp: 2;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
       }
     }
   }

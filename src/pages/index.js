@@ -4,7 +4,21 @@ import CommonLayout from '@/components/CommonLayout';
 import Main from '@/components/Main';
 import Reviews from '@/components/Reviews';
 
+import { reviews } from '@/common/reviews/reviews';
+import { useState, useEffect } from 'react';
+
 export default function Home() {
+  const [rating, setRating] = useState(null);
+  const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
+
+  useEffect(() => {
+    if (rating === null) {
+      setReviewsToDisplay(reviews);
+    } else {
+      setReviewsToDisplay(reviews.filter((item) => item.ratings === rating));
+    }
+  }, [rating]);
+
   return (
     <>
       <Head>
@@ -15,8 +29,8 @@ export default function Home() {
       </Head>
       <CommonLayout>
         <main>
-          <Main />
-          <Reviews />
+          <Main setRating={setRating} />
+          <Reviews reviews={reviewsToDisplay} />
         </main>
       </CommonLayout>
     </>
