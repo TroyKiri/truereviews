@@ -12,7 +12,7 @@ import Feedback from '@/components/Forms/Feedback';
 import SingleReview from '@/components/SingleReview';
 import NewCommentForm from '@/components/Forms/NewCommentForm';
 
-export default function Home() {
+export default function Home({ reviews }) {
   const [id, setId] = useState(null);
   const [review, setReview] = useState({});
   const [rating, setRating] = useState(null);
@@ -54,4 +54,10 @@ export default function Home() {
       {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <NewCommentForm setModal={setModal} />}</Modal>}
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: { reviews },
+  };
 }
