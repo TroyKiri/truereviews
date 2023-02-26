@@ -12,9 +12,9 @@ import Feedback from '@/components/Forms/Feedback';
 import SingleReview from '@/components/SingleReview';
 import NewCommentForm from '@/components/Forms/NewCommentForm';
 
-export default function Home({ reviews }) {
+export default function Home() {
   const [id, setId] = useState(null);
-  const [review, setReview] = useState({});
+  const [review, setReview] = useState(null);
   const [rating, setRating] = useState(null);
   const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
 
@@ -29,7 +29,7 @@ export default function Home({ reviews }) {
   }, [rating]);
 
   useEffect(() => {
-    setReview(reviews.find((item) => item.id == id));
+    id ? setReview(reviews.find((item) => item.id == id)) : setReview(null);
     id &&
       setTimeout(() => {
         document.querySelector('#singleReview').scrollIntoView({ behavior: 'smooth' });
@@ -54,10 +54,4 @@ export default function Home({ reviews }) {
       {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <NewCommentForm setModal={setModal} />}</Modal>}
     </>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: { reviews },
-  };
 }
