@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import Head from 'next/head';
 
 import CommonLayout from '@/components/CommonLayout';
 import Rules from '@/components/Rules';
+import Modal from '@/components/Modal';
+import NewReviewForm from '@/components/Forms/NewReviewForm';
+import Feedback from '@/components/Forms/Feedback';
 
 export default function RulesSection() {
+  const [modal, setModal] = useState(null);
   return (
     <>
       <Head>
@@ -12,11 +17,12 @@ export default function RulesSection() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CommonLayout>
+      <CommonLayout setModal={setModal}>
         <main>
           <Rules />
         </main>
       </CommonLayout>
+      {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <h1>Комментарий</h1>}</Modal>}
     </>
   );
 }

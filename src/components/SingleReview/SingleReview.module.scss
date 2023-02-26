@@ -14,6 +14,7 @@
   @media (min-width: 1200px) {
     max-width: 1200px;
     padding: 0;
+    align-items: start;
   }
 }
 
@@ -38,7 +39,7 @@
 
     @media (min-width: 1200px) {
       margin-bottom: 0;
-      margin-left: 20px;
+      margin-right: 20px;
     }
   }
 
@@ -104,14 +105,22 @@
   }
 }
 
+.commentsWrap {
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
+}
+
 .comments {
   display: flex;
   flex-direction: column;
   margin-bottom: 32px;
 
   @media (min-width: 1200px) {
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   .title {

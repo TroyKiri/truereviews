@@ -1,3 +1,8 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrap {
   display: flex;
   align-items: flex-start;
@@ -53,6 +58,7 @@
       line-height: 17px;
       text-transform: uppercase;
       color: #7f8a94;
+      margin-bottom: 35px;
 
       span {
         position: relative;
@@ -77,8 +83,14 @@
 }
 
 .response {
+  margin-bottom: 35px;
   display: flex;
   align-items: flex-start;
+
+  @media (min-width: 1200px) {
+    width: 1090px;
+    align-self: flex-end;
+  }
 
   .photo {
     width: 40px;
@@ -109,6 +121,12 @@
       background: #ffffff;
       border: 1px solid #d6dae1;
       border-radius: 4px;
+
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      color: #000;
+      padding: 10px;
     }
 
     .buttons {

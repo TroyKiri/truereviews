@@ -10,7 +10,14 @@ export default function Footer({ setModal }) {
         <Link href="/rules" className={s.link}>
           правила
         </Link>
-        <Link href="/" className={s.link} onClick={() => setModal('feedback')}>
+        <Link
+          href="/"
+          className={s.link}
+          onClick={(e) => {
+            e.preventDefault();
+            setModal('feedback');
+          }}
+        >
           обратная связь
         </Link>
       </div>

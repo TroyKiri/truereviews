@@ -9,12 +9,15 @@ import { useState, useEffect } from 'react';
 import Modal from '@/components/Modal';
 import NewReviewForm from '@/components/Forms/NewReviewForm';
 import Feedback from '@/components/Forms/Feedback';
+import SingleReview from '@/components/SingleReview';
 
 export default function Home() {
+  const [id, setId] = useState(null);
+  const [review, setReview] = useState({});
   const [rating, setRating] = useState(null);
   const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
 
-  const [modal, setModal] = useState('feedback');
+  const [modal, setModal] = useState(null);
 
   useEffect(() => {
     if (rating === null) {
@@ -23,6 +26,13 @@ export default function Home() {
       setReviewsToDisplay(reviews.filter((item) => item.ratings === rating));
     }
   }, [rating]);
+
+  useEffect(() => {
+    setReview(reviews.find((item) => item.id == id));
+    id && setTimeout(() => {
+      document.querySelector('#singleReview').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+  }, [id]);
 
   return (
     <>
@@ -34,8 +44,9 @@ export default function Home() {
       </Head>
       <CommonLayout setModal={setModal}>
         <main>
-          <Main setRating={setRating} setModal={setModal} />
-          <Reviews reviews={reviewsToDisplay} />
+          <Main setRating={setRating} setModal={setModal} setId={setId} />
+          {!review && <Reviews reviews={reviewsToDisplay} setId={setId} />}
+          {review && <SingleReview review={review} />}
         </main>
       </CommonLayout>
       {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <h1>Комментарий</h1>}</Modal>}

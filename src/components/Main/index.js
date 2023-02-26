@@ -8,7 +8,7 @@ import { Rating } from 'react-simple-star-rating';
 import { reviews } from '@/common/reviews/reviews';
 import s from './Main.module.scss';
 
-export default function Main({ setRating, setModal }) {
+export default function Main({ setRating, setModal, setId }) {
   ChartJS.register(CategoryScale, LinearScale, BarElement);
 
   const [totalRating, setTotalRating] = useState();
@@ -71,6 +71,7 @@ export default function Main({ setRating, setModal }) {
 
   const chartRef = useRef();
   const onClick = (event) => {
+    setId(null);
     setRating(getElementAtEvent(chartRef.current, event)[0].index + 1);
     setTimeout(() => {
       document.querySelector('#reviews').scrollIntoView({ behavior: 'smooth' });
@@ -104,8 +105,11 @@ export default function Main({ setRating, setModal }) {
           <button
             className={s.buttonSort}
             onClick={() => {
+              setId(null);
               setRating(null);
-              document.querySelector('#reviews').scrollIntoView({ behavior: 'smooth' });
+              setTimeout(() => {
+                document.querySelector('#reviews').scrollIntoView({ behavior: 'smooth' });
+              }, 200);
             }}
           >
             все отзывы ({reviews.length})
