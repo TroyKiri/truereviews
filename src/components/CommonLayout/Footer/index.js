@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import s from './Footer.module.scss';
 
-export default function Footer() {
+export default function Footer({ setModal }) {
   return (
     <footer className={s.footer}>
       <div className={s.wrap}>
@@ -10,7 +10,7 @@ export default function Footer() {
         <Link href="/rules" className={s.link}>
           правила
         </Link>
-        <Link href="/" className={s.link}>
+        <Link href="/" className={s.link} onClick={() => setModal('feedback')}>
           обратная связь
         </Link>
       </div>

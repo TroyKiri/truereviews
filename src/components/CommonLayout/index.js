@@ -1,12 +1,12 @@
 import Header from './Header';
 import Footer from './Footer';
 
-export default function CommonLayout({ children }) {
+export default function CommonLayout({ children, setModal }) {
   return (
     <>
-      <Header />
+      <Header setModal={setModal} />
       {children}
-      <Footer />
+      <Footer setModal={setModal} />
     </>
   );
 }

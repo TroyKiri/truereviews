@@ -8,7 +8,7 @@ import { Rating } from 'react-simple-star-rating';
 import { reviews } from '@/common/reviews/reviews';
 import s from './Main.module.scss';
 
-export default function Main({ setRating }) {
+export default function Main({ setRating, setModal }) {
   ChartJS.register(CategoryScale, LinearScale, BarElement);
 
   const [totalRating, setTotalRating] = useState();
@@ -98,7 +98,9 @@ export default function Main({ setRating }) {
           <div className={s.chartWrap}>
             <Bar ref={chartRef} options={options} data={data} onClick={onClick} />
           </div>
-          <button className={s.button}>добавить отзыв о компании</button>
+          <button className={s.button} onClick={() => setModal('newReview')}>
+            добавить отзыв о компании
+          </button>
           <button
             className={s.buttonSort}
             onClick={() => {

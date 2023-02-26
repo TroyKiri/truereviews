@@ -6,10 +6,15 @@ import Reviews from '@/components/Reviews';
 
 import { reviews } from '@/common/reviews/reviews';
 import { useState, useEffect } from 'react';
+import Modal from '@/components/Modal';
+import NewReviewForm from '@/components/Forms/NewReviewForm';
+import Feedback from '@/components/Forms/Feedback';
 
 export default function Home() {
   const [rating, setRating] = useState(null);
   const [reviewsToDisplay, setReviewsToDisplay] = useState(reviews);
+
+  const [modal, setModal] = useState('feedback');
 
   useEffect(() => {
     if (rating === null) {
@@ -27,12 +32,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CommonLayout>
+      <CommonLayout setModal={setModal}>
         <main>
-          <Main setRating={setRating} />
+          <Main setRating={setRating} setModal={setModal} />
           <Reviews reviews={reviewsToDisplay} />
         </main>
       </CommonLayout>
+      {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <h1>Комментарий</h1>}</Modal>}
     </>
   );
 }
