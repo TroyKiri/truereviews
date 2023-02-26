@@ -3,7 +3,7 @@ import Comment from '../Comment';
 import s from './SingleReview.module.scss';
 import { useState } from 'react';
 
-export default function SingleReview({ review }) {
+export default function SingleReview({ review, setModal }) {
   const [isHided, setIsHided] = useState(false);
   return (
     <section className={s.main} id="singleReview">
@@ -26,7 +26,7 @@ export default function SingleReview({ review }) {
         </div>
         <div className={s.comments}>
           <h3 className={s.title}>Комментарии к отзыву (2)</h3>
-          <button className={s.button}>Оставить комментарий</button>
+          <button className={s.button} onClick={() => setModal('NewCommentForm') }>Оставить комментарий</button>
         </div>
         <div className={s.commentsWrap}>
           <Comment />

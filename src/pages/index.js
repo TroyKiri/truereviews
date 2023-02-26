@@ -10,6 +10,7 @@ import Modal from '@/components/Modal';
 import NewReviewForm from '@/components/Forms/NewReviewForm';
 import Feedback from '@/components/Forms/Feedback';
 import SingleReview from '@/components/SingleReview';
+import NewCommentForm from '@/components/Forms/NewCommentForm';
 
 export default function Home() {
   const [id, setId] = useState(null);
@@ -29,9 +30,10 @@ export default function Home() {
 
   useEffect(() => {
     setReview(reviews.find((item) => item.id == id));
-    id && setTimeout(() => {
-      document.querySelector('#singleReview').scrollIntoView({ behavior: 'smooth' });
-    }, 200);
+    id &&
+      setTimeout(() => {
+        document.querySelector('#singleReview').scrollIntoView({ behavior: 'smooth' });
+      }, 200);
   }, [id]);
 
   return (
@@ -46,10 +48,10 @@ export default function Home() {
         <main>
           <Main setRating={setRating} setModal={setModal} setId={setId} />
           {!review && <Reviews reviews={reviewsToDisplay} setId={setId} />}
-          {review && <SingleReview review={review} />}
+          {review && <SingleReview review={review} setModal={setModal} />}
         </main>
       </CommonLayout>
-      {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <h1>Комментарий</h1>}</Modal>}
+      {modal && <Modal setModal={setModal}>{modal === 'newReview' ? <NewReviewForm /> : modal === 'feedback' ? <Feedback /> : <NewCommentForm setModal={setModal} />}</Modal>}
     </>
   );
 }
