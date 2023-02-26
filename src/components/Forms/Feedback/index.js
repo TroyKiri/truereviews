@@ -25,7 +25,7 @@ export default function Feedback() {
       <h2 className={s.title}>Связаться с нами</h2>
       <div className={s.inputBox}>
         <input className={`${s.input} ${errors.name && s.errorInput}`} type="text" name="name" id="name" {...register('name', { required: true })} />
-        <label className={`${s.label} ${watch('name') && watch('name').length > 0 && s.valid}`} htmlFor="name">
+        <label className={`${s.label} ${watch('name') && watch('name').length > 0 && s.valid} ${errors.name && s.errorLabel}`} htmlFor="name">
           ваше имя
         </label>
         {errors.name && <span className={s.error}>Это поле необходимо заполнить</span>}
@@ -47,14 +47,14 @@ export default function Feedback() {
             },
           })}
         />
-        <label className={`${s.label} ${watch('email') && watch('email').length > 0 && s.valid}`} htmlFor="email">
+        <label className={`${s.label} ${watch('email') && watch('email').length > 0 && s.valid} ${errors.email && s.errorLabel}`} htmlFor="email">
           E-mail
         </label>
         {errors.email && <span className={s.error}>{errors.email.message}</span>}
       </div>
       <div className={s.inputBox}>
         <textarea className={`${s.textarea} ${errors.message && s.errorInput}`} type="text" name="message" id="message" {...register('message', { required: true })}></textarea>
-        <label className={`${s.label} ${watch('message') && watch('message').length > 0 && s.valid}`} htmlFor="message">
+        <label className={`${s.label} ${watch('message') && watch('message').length > 0 && s.valid} ${errors.message && s.errorLabel}`} htmlFor="message">
           текст сообщения
         </label>
         {errors.message && <span className={s.error}>Это поле необходимо заполнить</span>}

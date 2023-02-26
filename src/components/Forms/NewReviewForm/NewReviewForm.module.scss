@@ -84,10 +84,15 @@
     color: #ffffff;
     background: #de2a33;
     text-align: center;
+    margin-top: 4px;
   }
 
   .errorInput {
     border-color: #de2a33;
+  }
+
+  .errorLabel {
+    color: #de2a33;
   }
 }
 
